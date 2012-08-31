@@ -4,7 +4,7 @@
 package org.unitconverter;
 
 /**
- * @author mschilonka
+ * @author Michael Schilonka
  *
  */
 public class Converter {
