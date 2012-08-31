@@ -3,9 +3,10 @@
  */
 package org.unitconverter.frontend;
 
-import java.awt.GraphicsConfiguration;
-import java.awt.event.WindowAdapter;
+
+
 import java.awt.event.WindowEvent;
+import java.awt.event.WindowListener;
 
 import javax.swing.JFrame;
 
@@ -31,13 +32,49 @@ public class UnitConverterFrontend extends JFrame {
 
 	}
 	
-	  class SimpleWindowListener extends WindowAdapter
+	  class SimpleWindowListener implements WindowListener
 	  {
 	    public void windowClosing(WindowEvent e)
 	    {
 	      e.getWindow().dispose();
 	      System.exit(0);                            
-	    }           
+	    }
+
+		@Override
+		public void windowActivated(WindowEvent arg0) {
+			// TODO Auto-generated method stub
+			
+		}
+
+		@Override
+		public void windowClosed(WindowEvent arg0) {
+			// TODO Auto-generated method stub
+			
+		}
+
+		@Override
+		public void windowDeactivated(WindowEvent arg0) {
+			// TODO Auto-generated method stub
+			
+		}
+
+		@Override
+		public void windowDeiconified(WindowEvent arg0) {
+			// TODO Auto-generated method stub
+			
+		}
+
+		@Override
+		public void windowIconified(WindowEvent arg0) {
+			// TODO Auto-generated method stub
+			
+		}
+
+		@Override
+		public void windowOpened(WindowEvent arg0) {
+			// TODO Auto-generated method stub
+			
+		}           
 	  }
 	
 	
