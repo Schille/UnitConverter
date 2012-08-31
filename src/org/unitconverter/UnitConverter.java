@@ -32,8 +32,7 @@ public class UnitConverter {
 	 * @throws ClassNotFoundException 
 	 */
 	public static void main(String[] args) throws ClassNotFoundException, InstantiationException, IllegalAccessException, UnsupportedLookAndFeelException {
-		UIManager.setLookAndFeel(
-	            UIManager.getCrossPlatformLookAndFeelClassName());
+		UIManager.setLookAndFeel("com.sun.java.swing.plaf.gtk.GTKLookAndFeel");
 		
 		UnitConverter converter = new UnitConverter();
 		converter.run();
