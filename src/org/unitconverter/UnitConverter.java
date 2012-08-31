@@ -14,7 +14,7 @@ import org.unitconverter.frontend.UnitConverterFrontend;
 public class UnitConverter {
 	
 	private UnitConverterFrontend frontend;
-	
+
 	
 	public UnitConverter(){
 		frontend = new UnitConverterFrontend();
@@ -32,7 +32,7 @@ public class UnitConverter {
 	 * @throws ClassNotFoundException 
 	 */
 	public static void main(String[] args) throws ClassNotFoundException, InstantiationException, IllegalAccessException, UnsupportedLookAndFeelException {
-		UIManager.setLookAndFeel("com.sun.java.swing.plaf.gtk.GTKLookAndFeel");
+		UIManager.setLookAndFeel("com.sun.java.swing.plaf.motif.MotifLookAndFeel");
 		
 		UnitConverter converter = new UnitConverter();
 		converter.run();
