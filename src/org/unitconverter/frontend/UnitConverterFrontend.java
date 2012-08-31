@@ -28,6 +28,8 @@ public class UnitConverterFrontend extends JFrame {
 	private JTabbedPane tabbedPane;
 	private JPanel panel1;
 	private JPanel panel2;
+	
+	private int senseless;
 
 
 	private JTextField fieldleft;
