@@ -27,10 +27,9 @@ public class UnitConverterFrontend extends Frame {
 		setTitle("UnitConverter v" + CONFIG.VERSION);
 		setSize(W_SIZE,H_SIZE);
 		addWindowListener(new SimpleWindowListener());
-		setVisible(true);
+		setVisible(false);
 		pack();
 	}
-	
 	
 	  class SimpleWindowListener extends WindowAdapter
 	  {
