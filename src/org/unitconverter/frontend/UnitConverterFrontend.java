@@ -12,6 +12,7 @@ import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
+import javax.swing.JTextField;
 
 import org.unitconverter.CONFIG;
 
@@ -29,7 +30,8 @@ public class UnitConverterFrontend extends JFrame {
 	private JPanel panel2;
 
 
-	
+	private JTextField fieldleft;
+	private JTextField fieldright;
 	private JComboBox comboboxleft;
 	private JComboBox comboboxright;
 	
@@ -49,7 +51,7 @@ public class UnitConverterFrontend extends JFrame {
 		addWindowListener(new SimpleWindowListener());
 		setVisible(false);
 		
-		tabbedPane = new JTabbedPane();		
+		tabbedPane = new JTabbedPane();	
 		panel1 = new JPanel();
 		panel1.setLayout(null);
 		panel1.setBounds(0, 0, W_SIZE, H_SIZE);
@@ -62,6 +64,10 @@ public class UnitConverterFrontend extends JFrame {
 
 		comboboxleft = new JComboBox();
 		comboboxright = new JComboBox();
+		
+		fieldleft = new JTextField();
+		fieldright = new JTextField();
+		
 		comboboxleft.addItem("Left");
 		comboboxright.addItem("Right");
 
@@ -70,9 +76,17 @@ public class UnitConverterFrontend extends JFrame {
 		comboboxright.setLocation(120, 0);
 		comboboxright.setSize(100, 20);
 		
+		fieldleft.setLocation(0, 30);
+		fieldright.setLocation(120, 30);
+		fieldleft.setSize(80, 20);
+		fieldright.setSize(80, 20);
+		
+		
 
 		panel1.add(comboboxleft);
 		panel1.add(comboboxright);
+		panel1.add(fieldleft);
+		panel1.add(fieldright);
 
 		panel1.validate();
 		tabbedPane.addTab(CONFIG.PANEL1, panel1);
