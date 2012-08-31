@@ -17,7 +17,7 @@ public class UnitConverter {
 	}
 	
 	public void run(){
-		frontend.setVisible(true);
+		frontend.setVisible(true);	
 	}
 
 	/**
