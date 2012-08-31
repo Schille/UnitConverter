@@ -73,13 +73,13 @@ public class UnitConverterFrontend extends JFrame {
 		comboboxleft.addItem("Left");
 		comboboxright.addItem("Right");
 
-		comboboxleft.setLocation(0, 0);
+		comboboxleft.setLocation(85, 0);
 		comboboxleft.setSize(100, 20);
-		comboboxright.setLocation(120, 0);
+		comboboxright.setLocation(275, 0);
 		comboboxright.setSize(100, 20);
 		
-		fieldleft.setLocation(0, 30);
-		fieldright.setLocation(120, 30);
+		fieldleft.setLocation(0, 0);
+		fieldright.setLocation(190, 0);
 		fieldleft.setSize(80, 20);
 		fieldright.setSize(80, 20);
 		
