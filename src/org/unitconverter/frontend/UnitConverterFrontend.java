@@ -85,7 +85,7 @@ public class UnitConverterFrontend extends JFrame {
 		tabbedPane = new JTabbedPane();	
 		
 		panel_gr = producePanel(3);
-		panel_menu = producePanel(2);
+		panel_menu = createPanelMenu();
 		panel_conv = producePanel(4);
 		panel_gr2 = producePanel(5);
 		
@@ -132,9 +132,7 @@ public class UnitConverterFrontend extends JFrame {
 			
 			
 			//MenuPanel for "Sekundarstufe 1"
-			panel2 = new JPanel();
-			panel2.setLayout(null);
-			panel2.setBounds(0, 0, W_SIZE, H_SIZE);
+
 
 			panel3 = new JPanel();
 			panel3.setLayout(null);
@@ -155,6 +153,80 @@ public class UnitConverterFrontend extends JFrame {
 			
 			label_l = new JLabel("Von: ");
 			label_r = new JLabel("In: ");
+
+			
+
+			comboboxleft.setLocation(155, H_SIZE/3);
+			comboboxright.setLocation(425, H_SIZE/3);
+			comboboxleft.setSize(100, 25);
+			comboboxright.setSize(100, 25);
+			
+			comboboxleft_2.setLocation(155, H_SIZE/3);
+			comboboxright_2.setLocation(425, H_SIZE/3);
+			comboboxleft_2.setSize(100, 25);
+			comboboxright_2.setSize(100, 25);
+			
+			fieldleft.setLocation(30, H_SIZE/3);
+			fieldright.setLocation(300, H_SIZE/3);
+			fieldleft.setSize(120, 25);
+			fieldright.setSize(120, 25);
+			
+			label_l.setLocation(33, H_SIZE/3-20);
+			label_r.setLocation(302, H_SIZE/3-20);
+			
+			
+			
+			label_l.setSize(50, 25);
+			label_r.setSize(50, 25);
+
+			
+			button_back = new JButton("Zurück zum Menü!");
+			button_back.setSize(150, 30);
+			button_back.setLocation(390, 210);
+			button_back.addActionListener(new ButtonListener(this, 'b'));
+			
+			
+			
+			panel1.add(comboboxleft);
+			panel1.add(comboboxright);
+			panel1.add(fieldleft);
+			panel1.add(fieldright);
+			panel1.add(label_l);
+			panel1.add(label_r);
+		
+
+			
+			
+			panel4 = panel1;
+			panel5 = panel1;
+			
+			
+			
+			panel1.validate();
+			
+			switch(k) {
+			case 1: return panel1;
+			case 2: return panel2;
+			case 3: return panel3;
+			case 4: panel4.add(button_back); 
+					return panel4;
+					
+			case 5: panel5.remove(comboboxleft);
+					panel5.remove(comboboxright);
+					panel5.add(comboboxleft_2);
+					panel5.add(comboboxright_2);
+				return panel5;
+			}
+			
+			return panel3;
+			
+	 }
+	 
+	 private JPanel createPanelMenu () {
+			panel2 = new JPanel();
+			panel2.setLayout(null);
+			panel2.setBounds(0, 0, W_SIZE, H_SIZE);
+			
 			label_menu = new JLabel("Bitte wähle eine physikalische Größe!");
 			label_mass = new JLabel("Masse");
 			label_area = new JLabel("Fläche");
@@ -181,38 +253,15 @@ public class UnitConverterFrontend extends JFrame {
 			Image area_n = area_i.getScaledInstance(110, 110, java.awt.Image.SCALE_SMOOTH);
 			area = new ImageIcon(area_n);
 			
+			
+			
 			button_mass = new JButton(mass);
 			button_area = new JButton(area);		
 			button_cap = new JButton(cap);
 			button_len = new JButton(len);
-			button_back = new JButton("Zurück zum Menü!");
+			
 			
 
-			comboboxleft.setLocation(155, H_SIZE/3);
-			comboboxright.setLocation(425, H_SIZE/3);
-			comboboxleft.setSize(100, 25);
-			comboboxright.setSize(100, 25);
-			
-			comboboxleft_2.setLocation(155, H_SIZE/3);
-			comboboxright_2.setLocation(425, H_SIZE/3);
-			comboboxleft_2.setSize(100, 25);
-			comboboxright_2.setSize(100, 25);
-			
-			fieldleft.setLocation(30, H_SIZE/3);
-			fieldright.setLocation(300, H_SIZE/3);
-			fieldleft.setSize(120, 25);
-			fieldright.setSize(120, 25);
-			
-			label_l.setLocation(33, H_SIZE/3-20);
-			label_r.setLocation(302, H_SIZE/3-20);
-			
-			label_menu.setLocation(0, 20);
-			label_menu.setHorizontalAlignment(JLabel.CENTER);
-			
-			label_l.setSize(50, 25);
-			label_r.setSize(50, 25);
-			label_menu.setSize(550, 25);
-			
 			button_mass.setSize(120, 120);
 			button_mass.setLocation(20, 50);
 			button_mass.addActionListener(new ButtonListener(this, 'm'));
@@ -230,50 +279,17 @@ public class UnitConverterFrontend extends JFrame {
 			button_area.setLocation(410, 50);
 			button_area.addActionListener(new ButtonListener(this, 'l'));
 			
-			button_back.setSize(150, 30);
-			button_back.setLocation(390, 210);
-			button_back.addActionListener(new ButtonListener(this, 'b'));
+			label_menu.setSize(550, 25);
+			label_menu.setLocation(0, 20);
+			label_menu.setHorizontalAlignment(JLabel.CENTER);
 			
-			
-			
-			panel1.add(comboboxleft);
-			panel1.add(comboboxright);
-			panel1.add(fieldleft);
-			panel1.add(fieldright);
-			panel1.add(label_l);
-			panel1.add(label_r);
-		
 			panel2.add(button_mass);
 			panel2.add(button_cap);
 			panel2.add(button_len);
 			panel2.add(button_area);
 			panel2.add(label_menu);
 			
-			panel3.add(panel2);
-			
-			panel4 = panel1;
-			panel5 = panel1;
-			
-			
-			
-			panel1.validate();
-			panel2.validate();
-			
-			switch(k) {
-			case 1: return panel1;
-			case 2: return panel2;
-			case 3: return panel3;
-			case 4: panel4.add(button_back); 
-					return panel4;
-					
-			case 5: panel5.remove(comboboxleft);
-					panel5.remove(comboboxright);
-					panel5.add(comboboxleft_2);
-					panel5.add(comboboxright_2);
-				return panel5;
-			}
-			
-			return panel3;
+			return panel2;
 			
 	 }
 	
