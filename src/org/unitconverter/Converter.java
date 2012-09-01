@@ -33,9 +33,6 @@ public class Converter {
 	
 	public static String[] getUnitsAppropriated(CONFIG.Units myUnits){
 		ArrayList<String> result = new ArrayList<String>();
-
-	
-
 		
 		if(myUnits.equals(CONFIG.Units.LENGTH) || myUnits.equals(CONFIG.Units.ALL))
 		{
@@ -57,12 +54,11 @@ public class Converter {
 			result.add("cm³");
 			result.add("dm³");
 			result.add("mm³");
-			result.add("l");
-			result.add("ml");
-			result.add("cl");
+			result.add("L");
+			result.add("mL");
+			result.add("cL");
 		}
-			
-
+		
 		String[] a = {};
 		return result.toArray(a);
 	}
