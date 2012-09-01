@@ -21,7 +21,7 @@ public class TestAll {
 		}
 		
 		Converter conv = new Converter();
-		System.out.println(conv.convert(250, "cm", "m"));
+		System.out.println(conv.convert(250, "mm³", "cm³"));
 	}
 
 }

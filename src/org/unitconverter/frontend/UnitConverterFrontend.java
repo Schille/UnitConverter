@@ -19,6 +19,7 @@ import javax.swing.JTabbedPane;
 import javax.swing.JTextField;
 
 import org.unitconverter.CONFIG;
+import org.unitconverter.Converter;
 
 /**
  * @author Michael Schilonka
@@ -73,10 +74,14 @@ public class UnitConverterFrontend extends JFrame {
 		setVisible(false);
 		
 		tabbedPane = new JTabbedPane();	
+	
+		
 		
 		panel_gr = producePanel(3);
 		panel_menu = producePanel(2);
 		panel_conv = producePanel(4);
+		
+		fillComboBox(CONFIG.Units.ALL);
 		
 		
 		panel_gr.add(panel_menu);
@@ -138,7 +143,7 @@ public class UnitConverterFrontend extends JFrame {
 			
 			label_l = new JLabel("Von: ");
 			label_r = new JLabel("In: ");
-			label_menu = new JLabel("Bitte wähle eine physikalische Größe!");
+			label_menu = new JLabel("Bitte w√§hle eine physikalische Gr√∂√üe!");
 			
 			ImageIcon mass = new ImageIcon("pic/mass.png");
 			Image mass_i = mass.getImage();
@@ -159,7 +164,7 @@ public class UnitConverterFrontend extends JFrame {
 					
 			button_cap = new JButton(cap);
 			button_len = new JButton(len);
-			button_back = new JButton("Zurück zum Menü!");
+			button_back = new JButton("Zur√ºck zum Men√º!");
 			
 			comboboxleft.addItem("Left");
 			comboboxright.addItem("Right");
@@ -231,6 +236,15 @@ public class UnitConverterFrontend extends JFrame {
 			
 			return panel3;
 			
+	 }
+	 
+	 public void fillComboBox(CONFIG.Units myUnits){
+		 for(String key : Converter.getUnitsAppropriated(myUnits)){
+			 comboboxleft.addItem(key);
+		 }
+		 for(String key : Converter.getUnitsAppropriated(myUnits)){
+			 comboboxright.addItem(key);
+		 }
 	 }
 	
 	class SimpleWindowListener implements WindowListener {
