@@ -91,8 +91,7 @@ public class UnitConverterFrontend extends JFrame {
 		panel_menu = producePanel(2);
 		panel_conv = producePanel(4);
 		panel_gr2 = producePanel(5);
-		
-		fillComboBox(CONFIG.Units.ALL);
+
 		
 		
 		panel_gr.add(panel_menu);
@@ -266,11 +265,15 @@ public class UnitConverterFrontend extends JFrame {
 			panel1.validate();
 			panel2.validate();
 			
+			fillComboBox(CONFIG.Units.ALL);
+			
 			switch(k) {
 			case 1: return panel1;
 			case 2: return panel2;
 			case 3: return panel3;
 			case 4: panel4.add(button_back); 
+			panel4.add(comboboxleft);
+			panel4.add(comboboxright);
 					return panel4;
 					
 			case 5: panel5.remove(comboboxleft);
@@ -287,9 +290,12 @@ public class UnitConverterFrontend extends JFrame {
 	 public void fillComboBox(CONFIG.Units myUnits){
 		 for(String key : Converter.getUnitsAppropriated(myUnits)){
 			 comboboxleft.addItem(key);
+			 comboboxleft_2.addItem(key);
 		 }
 		 for(String key : Converter.getUnitsAppropriated(myUnits)){
 			 comboboxright.addItem(key);
+			 comboboxright_2.addItem(key);
+			 
 		 }
 	 }
 	
