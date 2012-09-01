@@ -15,4 +15,11 @@ public class CONFIG {
 	
 	public static String PANEL2 = "Sek2";
 	
+	public enum Units{
+		ALL,
+		LENGTH,
+		MASS,
+		CAPACITY	,	
+	}
+	
 }
