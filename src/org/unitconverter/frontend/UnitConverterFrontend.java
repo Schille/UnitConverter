@@ -5,6 +5,7 @@ package org.unitconverter.frontend;
 
 import java.awt.Color;
 import java.awt.Component;
+import java.awt.Font;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -45,7 +46,7 @@ public class UnitConverterFrontend extends JFrame {
 	private JPanel panel_menu;
 	private JPanel panel_conv;
 	private JPanel panel_gr2;
-	private JLabel arrow;
+
 	
 	
 	private JLabel label_l;
@@ -57,6 +58,11 @@ public class UnitConverterFrontend extends JFrame {
 	private JLabel label_area;
 	private JLabel label_cap;
 	private JLabel label_len;
+	private JLabel arrow;
+	private JLabel arrow_o;
+	private JLabel arrow2;
+	private JLabel arrow_o2;
+	
 	
 	private JButton button_mass;
 	private JButton button_cap;
@@ -76,7 +82,8 @@ public class UnitConverterFrontend extends JFrame {
 	private JComboBox comboboxleft_2;
 	private JComboBox comboboxright_2;
 	
-
+	private Font Labelfont = new Font("Arial", 0, 30);
+	private Font Fieldfont = new Font("Arial", 0, 20);
 	
 	// size of the window
 	static final int H_SIZE = 300;
@@ -108,7 +115,6 @@ public class UnitConverterFrontend extends JFrame {
 		
 		tabbedPane.addTab(CONFIG.PANEL1, panel_gr);
 		tabbedPane.addTab(CONFIG.PANEL2, panel_gr2);
-		fillComboBox(CONFIG.Units.LENGTH);
 		this.add(tabbedPane).validate();
 		this.setResizable(false);
 
@@ -150,10 +156,8 @@ public class UnitConverterFrontend extends JFrame {
 			comboboxleft = new JComboBox();
 			comboboxright = new JComboBox();
 			
-			fieldleft = new JTextFieldUnit("0") ;
-
-			
-			fieldright = new JTextFieldUnit("0");
+			fieldleft = new JTextFieldUnit("0.0") ;			
+			fieldright = new JTextFieldUnit("0.0");
 			
 			
 			label_l = new JLabel("Von: ");
@@ -162,32 +166,45 @@ public class UnitConverterFrontend extends JFrame {
 
 			comboboxleft.setLocation(155, H_SIZE/3);
 			comboboxright.setLocation(425, H_SIZE/3);
-			comboboxleft.setSize(100, 25);
-			comboboxright.setSize(100, 25);
+			comboboxleft.setSize(100, 40);
+			comboboxright.setSize(100, 40);
+			comboboxleft.setFont(Fieldfont);
+			comboboxright.setFont(Fieldfont);
 			
 			
 			fieldleft.setLocation(30, H_SIZE/3);
 			fieldright.setLocation(300, H_SIZE/3);
-			fieldleft.setSize(120, 25);
-			fieldright.setSize(120, 25);
+			fieldleft.setSize(120, 40);
+			fieldright.setSize(120, 40);
 			
 			fieldleft.addKeyListener(new FieldListener(fieldright, fieldleft, comboboxleft, comboboxright, this));
 			fieldright.addKeyListener(new FieldListener(fieldleft, fieldright, comboboxright, comboboxleft, this));
 			fieldleft.addFocusListener(new FieldFocusListener(this));
 			fieldright.addFocusListener(new FieldFocusListener(this));
 			
+			fieldleft.setFont(Fieldfont);
+			fieldright.setFont(Fieldfont);
 			
-			label_l.setLocation(33, H_SIZE/3-20);
-			label_r.setLocation(302, H_SIZE/3-20);
-			label_l.setSize(50, 25);
-			label_r.setSize(50, 25);
+			label_l.setLocation(33, 70);
+			label_r.setLocation(302, 70);
+			label_l.setSize(100, 25);
+			label_l.setFont(Labelfont);
+			label_r.setFont(Labelfont);
+			label_r.setSize(100, 25);
 			
-			ImageIcon arrow_icon = new ImageIcon("pic/grey_arrow_right.png");
+			ImageIcon arrow_icon = new ImageIcon("pic/arrow_right.png");
 			arrow_icon = new ImageIcon(arrow_icon.getImage().getScaledInstance(40, 40, java.awt.Image.SCALE_SMOOTH));
-			
 			arrow = new JLabel(arrow_icon);
-		    arrow.setLocation(260, H_SIZE/3);
+		    arrow.setLocation(257, H_SIZE/3);
 		    arrow.setSize(40,40);
+		    
+		    ImageIcon arrow_o_icon = new ImageIcon("pic/arrow_left.png");
+			arrow_o_icon = new ImageIcon(arrow_o_icon.getImage().getScaledInstance(40, 40, java.awt.Image.SCALE_SMOOTH));
+			arrow_o = new JLabel(arrow_o_icon);
+		    arrow_o.setLocation(257, H_SIZE/3);
+		    arrow_o.setSize(40,40);
+		    arrow_o.setVisible(false);
+		   
 		    
 			button_back = new JButton("Zurück zum Menü!");
 			button_back.setSize(150, 30);
@@ -202,6 +219,7 @@ public class UnitConverterFrontend extends JFrame {
 			panel1.add(comboboxleft);
 			panel1.add(comboboxright);
 			panel1.add(arrow);
+			panel1.add(arrow_o);
 		 
 			comboboxleft.addActionListener(new BoxListener(fieldleft, fieldright, comboboxright, comboboxleft, this));
 			comboboxright.addActionListener(new BoxListener(fieldright, fieldleft, comboboxleft, comboboxright, this));
@@ -223,8 +241,8 @@ public class UnitConverterFrontend extends JFrame {
 			comboboxleft_2 = new JComboBox();
 			comboboxright_2 = new JComboBox();
 			
-			fieldleft_2 = new JTextFieldUnit("0");
-			fieldright_2 = new JTextFieldUnit("0");
+			fieldleft_2 = new JTextFieldUnit("0.0");
+			fieldright_2 = new JTextFieldUnit("0.0");
 			
 			
 			label_l2 = new JLabel("Von: ");
@@ -233,26 +251,45 @@ public class UnitConverterFrontend extends JFrame {
 			
 			comboboxleft_2.setLocation(155, H_SIZE/3);
 			comboboxright_2.setLocation(425, H_SIZE/3);
-			comboboxleft_2.setSize(100, 25);
-			comboboxright_2.setSize(100, 25);
-			
+			comboboxleft_2.setSize(100, 40);
+			comboboxright_2.setSize(100, 40);
+			comboboxleft_2.setFont(Fieldfont);
+			comboboxright_2.setFont(Fieldfont);
 			
 			fieldleft_2.setLocation(30, H_SIZE/3);
 			fieldright_2.setLocation(300, H_SIZE/3);
-			fieldleft_2.setSize(120, 25);
-			fieldright_2.setSize(120, 25);
+			fieldleft_2.setSize(120, 40);
+			fieldright_2.setSize(120, 40);
+			fieldleft_2.setFont(Fieldfont);
+			fieldright_2.setFont(Fieldfont);
 			
 			fieldleft_2.addKeyListener(new FieldListener(fieldright_2, fieldleft_2, comboboxleft_2, comboboxright_2, this));
 			fieldright_2.addKeyListener(new FieldListener(fieldleft_2, fieldright_2, comboboxright_2, comboboxleft_2, this));
 			fieldleft_2.addFocusListener(new FieldFocusListener(this));
 			fieldright_2.addFocusListener(new FieldFocusListener(this));
 			
-			label_l2.setLocation(33, H_SIZE/3-20);
-			label_r2.setLocation(302, H_SIZE/3-20);
+			label_l2.setLocation(33, 70);
+			label_r2.setLocation(302, 70);
 			
 			
-			label_l2.setSize(50, 25);
-			label_r2.setSize(50, 25);
+			label_l2.setSize(100, 25);
+			label_r2.setSize(100, 25);
+			label_l2.setFont(Labelfont);
+			label_r2.setFont(Labelfont);
+			
+			ImageIcon arrow2_icon = new ImageIcon("pic/arrow_right.png");
+			arrow2_icon = new ImageIcon(arrow2_icon.getImage().getScaledInstance(40, 40, java.awt.Image.SCALE_SMOOTH));
+			arrow2 = new JLabel(arrow2_icon);
+		    arrow2.setLocation(257, H_SIZE/3);
+		    arrow2.setSize(40,40);
+		    arrow2.setVisible(true);
+			
+			ImageIcon arrow_o_icon2 = new ImageIcon("pic/arrow_left.png");
+			arrow_o_icon2 = new ImageIcon(arrow_o_icon2.getImage().getScaledInstance(40, 40, java.awt.Image.SCALE_SMOOTH));
+			arrow_o2 = new JLabel(arrow_o_icon2);
+		    arrow_o2.setLocation(257, H_SIZE/3);
+		    arrow_o2.setSize(40,40);
+		    arrow_o2.setVisible(false);
 
 			panel3.add(fieldleft_2);
 			panel3.add(fieldright_2);
@@ -260,6 +297,8 @@ public class UnitConverterFrontend extends JFrame {
 			panel3.add(label_r2); 
 			panel3.add(comboboxleft_2);
 			panel3.add(comboboxright_2);
+			panel3.add(arrow2);
+			panel3.add(arrow_o2);
 		 
 			comboboxleft_2.addActionListener(new BoxListener(fieldleft_2, fieldright_2, comboboxright_2, comboboxleft_2, this));
 			comboboxright_2.addActionListener(new BoxListener(fieldright_2, fieldleft_2, comboboxleft_2, comboboxright_2, this));
@@ -329,17 +368,42 @@ public class UnitConverterFrontend extends JFrame {
 		
 			button_area.setSize(120, 120);
 			button_area.setLocation(410, 50);
-			button_area.addActionListener(new ButtonListener(this, 'l'));
+			button_area.addActionListener(new ButtonListener(this, 'a'));
 			
 			label_menu.setSize(550, 25);
 			label_menu.setLocation(0, 20);
 			label_menu.setHorizontalAlignment(JLabel.CENTER);
 			
+			label_mass = new JLabel("Masse");
+			label_cap = new JLabel("Volumen");
+			label_len = new JLabel("Länge");
+			label_area = new JLabel("Fläche");
+			
+			label_mass.setFont(Fieldfont);
+			label_mass.setLocation(48, 170);
+			label_mass.setSize(70, 40);
+			
+			label_cap.setFont(Fieldfont);
+			label_cap.setLocation(170, 170);
+			label_cap.setSize(90, 40);
+			
+			label_len.setFont(Fieldfont);
+			label_len.setLocation(315, 170);
+			label_len.setSize(70, 40);
+			
+			label_area.setFont(Fieldfont);
+			label_area.setLocation(440, 170);
+			label_area.setSize(70, 40);
+			
+			panel2.add(label_mass);
 			panel2.add(button_mass);
 			panel2.add(button_cap);
 			panel2.add(button_len);
 			panel2.add(button_area);
 			panel2.add(label_menu);
+			panel2.add(label_len);
+			panel2.add(label_area);
+			panel2.add(label_cap);
 			
 			return panel2;
 			
@@ -369,6 +433,10 @@ public class UnitConverterFrontend extends JFrame {
 		    
 	 }
 	 
+	 public void emptyBox () {
+		 comboboxleft.removeAllItems();
+		 comboboxright.removeAllItems();
+	 }
 	
 	 
 	 public void switchLabels() {
@@ -377,10 +445,14 @@ public class UnitConverterFrontend extends JFrame {
 			 if(fieldleft.hasFocus() || comboboxleft.hasFocus()) {
 			 label_l.setText("Von:");
 			 label_r.setText("In:");
+			 arrow.setVisible(true);
+			 arrow_o.setVisible(false);
 		 }
 		 else {
 			 label_r.setText("Von:");
 			 label_l.setText("In:"); 
+			 arrow.setVisible(false);
+			 arrow_o.setVisible(true);
 			 
 		 }
 		 }
@@ -388,10 +460,14 @@ public class UnitConverterFrontend extends JFrame {
 			 if(fieldleft_2.hasFocus() || comboboxleft_2.hasFocus()) {
 			 label_l2.setText("Von:");
 			 label_r2.setText("In:");
+			 arrow2.setVisible(true);
+			 arrow_o2.setVisible(false);
 		 }
 		 else {
 			 label_r2.setText("Von:");
 			 label_l2.setText("In:"); 
+			 arrow2.setVisible(false);
+			 arrow_o2.setVisible(true);
 			 
 		 }
 		 }

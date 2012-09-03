@@ -19,7 +19,8 @@ public class CONFIG {
 		ALL,
 		LENGTH,
 		MASS,
-		CAPACITY	,	
+		CAPACITY,
+		AREA,
 	}
 	
 }
