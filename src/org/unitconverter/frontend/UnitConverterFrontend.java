@@ -222,7 +222,7 @@ public class UnitConverterFrontend extends JFrame {
 		    arrow_o.setVisible(false);
 		   
 		    
-			button_back = new JButton("Zurück zum Menü!");
+			button_back = new JButton("ZurÔøΩck zum MenÔøΩ!");
 			button_back.setSize(150, 30);
 			button_back.setLocation(390, 210);
 			button_back.addActionListener(new ButtonListener(this, 'b'));
@@ -287,7 +287,7 @@ public class UnitConverterFrontend extends JFrame {
 			label_l2.setLocation(33, 70);
 			label_r2.setLocation(302, 70);
 			
-			label_err = new JLabel("Wählen Sie nicht den Strich aus!");
+			label_err = new JLabel("W√§hlen Sie nicht den Strich aus!");
 			label_err.setFont(Labelfont);
 			label_err.setForeground(Color.RED);
 			label_err.setLocation(30, 170);
@@ -299,14 +299,14 @@ public class UnitConverterFrontend extends JFrame {
 			label_l2.setFont(Labelfont);
 			label_r2.setFont(Labelfont);
 			
-			ImageIcon arrow2_icon = new ImageIcon("pic/arrow_right.png");
+			ImageIcon arrow2_icon = new ImageIcon(getClass().getResource("/pic/arrow_right.png"));
 			arrow2_icon = new ImageIcon(arrow2_icon.getImage().getScaledInstance(40, 40, java.awt.Image.SCALE_SMOOTH));
 			arrow2 = new JLabel(arrow2_icon);
 		    arrow2.setLocation(257, H_SIZE/3);
 		    arrow2.setSize(40,40);
 		    arrow2.setVisible(true);
 			
-			ImageIcon arrow_o_icon2 = new ImageIcon("pic/arrow_left.png");
+			ImageIcon arrow_o_icon2 = new ImageIcon(getClass().getResource("/pic/arrow_left.png"));
 			arrow_o_icon2 = new ImageIcon(arrow_o_icon2.getImage().getScaledInstance(40, 40, java.awt.Image.SCALE_SMOOTH));
 			arrow_o2 = new JLabel(arrow_o_icon2);
 		    arrow_o2.setLocation(257, H_SIZE/3);
@@ -339,30 +339,30 @@ public class UnitConverterFrontend extends JFrame {
 			panel2.setLayout(null);
 			panel2.setBounds(0, 0, W_SIZE, H_SIZE);
 			
-			label_menu = new JLabel("Bitte wähle eine physikalische Größe!");
+			label_menu = new JLabel("Bitte w√§hle eine physikalische Gr√∂√üe!");
 			label_mass = new JLabel("Masse");
-			label_area = new JLabel("Fläche");
+			label_area = new JLabel("Fl√§che");
 			label_cap  = new JLabel("Volumen");
-			label_len  = new JLabel("Länge");
+			label_len  = new JLabel("L√§nge");
 			
 			
 			
-			ImageIcon mass = new ImageIcon("pic/mass.png");
+			ImageIcon mass = new ImageIcon(getClass().getResource("/pic/mass.png"));
 			Image mass_i = mass.getImage();
 			Image mass_n = mass_i.getScaledInstance(110, 110, java.awt.Image.SCALE_SMOOTH);
 			mass = new ImageIcon(mass_n);
 			
-			ImageIcon len = new ImageIcon("pic/len.jpg");
+			ImageIcon len = new ImageIcon(getClass().getResource("/pic/len.jpg"));
 			Image len_i = len.getImage();
 			Image len_n = len_i.getScaledInstance(110, 110, java.awt.Image.SCALE_SMOOTH);
 			len = new ImageIcon(len_n);
 			
-			ImageIcon cap = new ImageIcon("pic/vol.jpg");
+			ImageIcon cap = new ImageIcon(getClass().getResource("/pic/vol.jpg"));
 			Image cap_i = cap.getImage();
 			Image cap_n = cap_i.getScaledInstance(110, 110, java.awt.Image.SCALE_SMOOTH);
 			cap = new ImageIcon(cap_n);
 			
-			ImageIcon area = new ImageIcon("pic/area.gif");
+			ImageIcon area = new ImageIcon(getClass().getResource("/pic/area.gif"));
 			Image area_i = area.getImage();
 			Image area_n = area_i.getScaledInstance(110, 110, java.awt.Image.SCALE_SMOOTH);
 			area = new ImageIcon(area_n);
@@ -399,8 +399,8 @@ public class UnitConverterFrontend extends JFrame {
 			
 			label_mass = new JLabel("Masse");
 			label_cap = new JLabel("Volumen");
-			label_len = new JLabel("Länge");
-			label_area = new JLabel("Fläche");
+			label_len = new JLabel("L√§nge");
+			label_area = new JLabel("Fl√§che");
 			
 			label_mass.setFont(Fieldfont);
 			label_mass.setLocation(48, 170);

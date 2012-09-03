@@ -3,21 +3,8 @@
  */
 package org.unitconverter;
 
-
-
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.Set;
-
-import javax.measure.converter.UnitConverter;
-import javax.measure.quantity.Length;
-import javax.measure.quantity.Mass;
-import javax.measure.quantity.Volume;
-import javax.measure.unit.BaseUnit;
-import javax.measure.unit.Dimension;
-import javax.measure.unit.NonSI;
-import javax.measure.unit.SI;
 import javax.measure.unit.Unit;
 
 import org.jscience.physics.amount.Amount;
