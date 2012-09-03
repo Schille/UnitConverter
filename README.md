@@ -8,5 +8,5 @@ The software is designed to pupils of every age. However it is seperated into tw
 "Sekundarstufe 1" - for pupils up to year 10
 "Sekundarstufe 2" - senior classes
 
-The unit converter serves the purpose of evaluating the usability and user acceptance. 
+The core of this frontend is made up of the JScience library. The unit converter serves the purpose of evaluating the usability and user acceptance. 
 In case you want give me your feedback regarding this topic, please let me know.
