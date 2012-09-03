@@ -7,6 +7,7 @@ package org.unitconverter;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 import java.util.Set;
 
 import javax.measure.converter.UnitConverter;
@@ -26,15 +27,15 @@ import org.jscience.physics.amount.Amount;
  *
  */
 public class Converter {
-	private static ArrayList<String> length = (ArrayList<String>) Arrays.asList("m", "mm", "cm", "km");
+	private static List<String> length =  Arrays.asList("m", "mm", "cm", "km");
 
-	private static ArrayList<String> mass = (ArrayList<String>) Arrays.asList("kg", "g", "mg", "t");
+	private static List<String> mass =  Arrays.asList("kg", "g", "mg", "t");
 	
-	private static ArrayList<String> capacity = (ArrayList<String>) Arrays.asList("m³", "cm³", "dm³", "mm³", "L", "mL","cL");
+	private static List<String> capacity =  Arrays.asList("m³", "cm³", "dm³", "mm³", "L", "mL","cL");
 	
-	private static ArrayList<String> area = (ArrayList<String>) Arrays.asList("m²", "cm²", "dm³", "mm³", "ha");
+	private static List<String> area =Arrays.asList("m²", "cm²", "dm³", "mm³", "ha");
 	
-	private static ArrayList<String> other = (ArrayList<String>) Arrays.asList("m/s", "km/h", "km/s", "m/h", "V", "mV", "kV", "W", "mW",
+	private static List<String> other = Arrays.asList("m/s", "km/h", "km/s", "m/h", "V", "mV", "kV", "W", "mW",
 			"MW", "kW", "N", "J", "kJ", "Nm", "kN");
 	
 	
