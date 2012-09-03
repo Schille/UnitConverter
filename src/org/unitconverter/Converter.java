@@ -6,6 +6,7 @@ package org.unitconverter;
 
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Set;
 
 import javax.measure.converter.UnitConverter;
@@ -25,6 +26,17 @@ import org.jscience.physics.amount.Amount;
  *
  */
 public class Converter {
+	private static ArrayList<String> length = (ArrayList<String>) Arrays.asList("m", "mm", "cm", "km");
+
+	private static ArrayList<String> mass = (ArrayList<String>) Arrays.asList("kg", "g", "mg", "t");
+	
+	private static ArrayList<String> capacity = (ArrayList<String>) Arrays.asList("m³", "cm³", "dm³", "mm³", "L", "mL","cL");
+	
+	private static ArrayList<String> area = (ArrayList<String>) Arrays.asList("m²", "cm²", "dm³", "mm³", "ha");
+	
+	private static ArrayList<String> other = (ArrayList<String>) Arrays.asList("m/s", "km/h", "km/s", "m/h", "V", "mV", "kV", "W", "mW",
+			"MW", "kW", "N", "J", "kJ", "Nm", "kN");
+	
 	
 	public static double convert(double myFromValue, String myFromUnit,  String myToUnit){
 		return Amount.valueOf(myFromValue, Unit.valueOf(myFromUnit)).to(Unit.valueOf(myToUnit)).getMaximumValue();
@@ -32,36 +44,58 @@ public class Converter {
 	
 	
 	public static String[] getUnitsAppropriated(CONFIG.Units myUnits){
-		ArrayList<String> result = new ArrayList<String>();
-		
-		if(myUnits.equals(CONFIG.Units.LENGTH) || myUnits.equals(CONFIG.Units.ALL))
-		{
-			result.add("m");
-			result.add("mm");
-			result.add("cm");
-			result.add("km");
-		}
-		if(myUnits.equals(CONFIG.Units.MASS) || myUnits.equals(CONFIG.Units.ALL))
-		{
-			result.add("kg");
-			result.add("g");
-			result.add("mg");
-			result.add("t");
-		}
-		if(myUnits.equals(CONFIG.Units.CAPACITY) || myUnits.equals(CONFIG.Units.ALL))
-		{
-			result.add("m³");
-			result.add("cm³");
-			result.add("dm³");
-			result.add("mm³");
-			result.add("L");
-			result.add("mL");
-			result.add("cL");
-		}
-		
 		String[] a = {};
-		return result.toArray(a);
+		
+		if(myUnits.equals(CONFIG.Units.LENGTH))
+		{
+			return length.toArray(a);
+		}
+		if(myUnits.equals(CONFIG.Units.MASS))
+		{
+			return mass.toArray(a);
+		}
+		if(myUnits.equals(CONFIG.Units.CAPACITY))
+		{
+			return capacity.toArray(a);
+		}
+		if(myUnits.equals(CONFIG.Units.AREA))
+		{
+			return area.toArray(a);
+		}
+
+		return concatAll(length.toArray(a), mass.toArray(a), capacity.toArray(a), area.toArray(a), other.toArray(a));
 	}
+	
+	public static String[] getConvertableUnits(String myUnit){
+		String[] a = {};
+		if(length.contains(myUnit))
+			return  length.toArray(a);
+		if(mass.contains(myUnit))
+			return mass.toArray(a);
+		if(capacity.contains(myUnit))
+			return capacity.toArray(a);
+		if(area.contains(myUnit))
+			return area.toArray(a);
+		return other.toArray(a);
+	}
+	
+	
+	
+	
+	public static <T> T[] concatAll(T[] first, T[]... rest) {
+		  int totalLength = first.length;
+		  for (T[] array : rest) {
+		    totalLength += array.length;
+		  }
+		  T[] result = Arrays.copyOf(first, totalLength);
+		  int offset = first.length;
+		  for (T[] array : rest) {
+		    System.arraycopy(array, 0, result, offset, array.length);
+		    offset += array.length;
+		  }
+		  return result;
+		}
+
 
 	
 }
