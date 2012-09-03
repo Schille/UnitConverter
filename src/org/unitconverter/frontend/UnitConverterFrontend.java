@@ -22,6 +22,8 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
 
 
 import org.unitconverter.CONFIG;
@@ -115,6 +117,17 @@ public class UnitConverterFrontend extends JFrame {
 		
 		tabbedPane.addTab(CONFIG.PANEL1, panel_gr);
 		tabbedPane.addTab(CONFIG.PANEL2, panel_gr2);
+		
+		tabbedPane.addChangeListener(new ChangeListener()  {
+			
+			@Override
+			public void stateChanged(ChangeEvent arg0) {
+				if (tabbedPane.getSelectedIndex()==1)
+					emptyBox2();
+				
+			}
+		});
+		
 		this.add(tabbedPane).validate();
 		this.setResizable(false);
 
@@ -438,6 +451,11 @@ public class UnitConverterFrontend extends JFrame {
 		 comboboxright.removeAllItems();
 	 }
 	
+	 public void emptyBox2 () {
+		 comboboxleft_2.removeAllItems();
+		 comboboxright_2.removeAllItems();
+	 }
+	 
 	 
 	 public void switchLabels() {
 		 // Only to switch Labels if necessary
