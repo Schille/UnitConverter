@@ -208,13 +208,13 @@ public class UnitConverterFrontend extends JFrame {
 			label_r.setFont(Labelfont);
 			label_r.setSize(100, 25);
 			
-			ImageIcon arrow_icon = new ImageIcon(getClass().getResource("/pic/arrow_right.png"));
+			ImageIcon arrow_icon = new ImageIcon(getClass().getResource("/arrow_right.png"));
 			arrow_icon = new ImageIcon(arrow_icon.getImage().getScaledInstance(40, 40, java.awt.Image.SCALE_SMOOTH));
 			arrow = new JLabel(arrow_icon);
 		    arrow.setLocation(257, H_SIZE/3);
 		    arrow.setSize(40,40);
 		    
-		    ImageIcon arrow_o_icon = new ImageIcon(getClass().getResource("/pic/arrow_left.png"));
+		    ImageIcon arrow_o_icon = new ImageIcon(getClass().getResource("/arrow_left.png"));
 			arrow_o_icon = new ImageIcon(arrow_o_icon.getImage().getScaledInstance(40, 40, java.awt.Image.SCALE_SMOOTH));
 			arrow_o = new JLabel(arrow_o_icon);
 		    arrow_o.setLocation(257, H_SIZE/3);
@@ -299,14 +299,14 @@ public class UnitConverterFrontend extends JFrame {
 			label_l2.setFont(Labelfont);
 			label_r2.setFont(Labelfont);
 			
-			ImageIcon arrow2_icon = new ImageIcon(getClass().getResource("/pic/arrow_right.png"));
+			ImageIcon arrow2_icon = new ImageIcon(getClass().getResource("/arrow_right.png"));
 			arrow2_icon = new ImageIcon(arrow2_icon.getImage().getScaledInstance(40, 40, java.awt.Image.SCALE_SMOOTH));
 			arrow2 = new JLabel(arrow2_icon);
 		    arrow2.setLocation(257, H_SIZE/3);
 		    arrow2.setSize(40,40);
 		    arrow2.setVisible(true);
 			
-			ImageIcon arrow_o_icon2 = new ImageIcon(getClass().getResource("/pic/arrow_left.png"));
+			ImageIcon arrow_o_icon2 = new ImageIcon(getClass().getResource("/arrow_left.png"));
 			arrow_o_icon2 = new ImageIcon(arrow_o_icon2.getImage().getScaledInstance(40, 40, java.awt.Image.SCALE_SMOOTH));
 			arrow_o2 = new JLabel(arrow_o_icon2);
 		    arrow_o2.setLocation(257, H_SIZE/3);
@@ -347,22 +347,22 @@ public class UnitConverterFrontend extends JFrame {
 			
 			
 			
-			ImageIcon mass = new ImageIcon(getClass().getResource("/pic/mass.png"));
+			ImageIcon mass = new ImageIcon(getClass().getResource("/mass.png"));
 			Image mass_i = mass.getImage();
 			Image mass_n = mass_i.getScaledInstance(110, 110, java.awt.Image.SCALE_SMOOTH);
 			mass = new ImageIcon(mass_n);
 			
-			ImageIcon len = new ImageIcon(getClass().getResource("/pic/len.jpg"));
+			ImageIcon len = new ImageIcon(getClass().getResource("/len.jpg"));
 			Image len_i = len.getImage();
 			Image len_n = len_i.getScaledInstance(110, 110, java.awt.Image.SCALE_SMOOTH);
 			len = new ImageIcon(len_n);
 			
-			ImageIcon cap = new ImageIcon(getClass().getResource("/pic/vol.jpg"));
+			ImageIcon cap = new ImageIcon(getClass().getResource("/vol.jpg"));
 			Image cap_i = cap.getImage();
 			Image cap_n = cap_i.getScaledInstance(110, 110, java.awt.Image.SCALE_SMOOTH);
 			cap = new ImageIcon(cap_n);
 			
-			ImageIcon area = new ImageIcon(getClass().getResource("/pic/area.gif"));
+			ImageIcon area = new ImageIcon(getClass().getResource("/area.gif"));
 			Image area_i = area.getImage();
 			Image area_n = area_i.getScaledInstance(110, 110, java.awt.Image.SCALE_SMOOTH);
 			area = new ImageIcon(area_n);
