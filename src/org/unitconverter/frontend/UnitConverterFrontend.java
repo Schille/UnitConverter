@@ -12,6 +12,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
+import java.text.ParseException;
 
 import javax.swing.ImageIcon;
 import javax.swing.InputVerifier;
@@ -124,6 +125,7 @@ public class UnitConverterFrontend extends JFrame {
 			public void stateChanged(ChangeEvent arg0) {
 				if (tabbedPane.getSelectedIndex()==1)
 					emptyBox2();
+					
 				
 			}
 		});
@@ -441,9 +443,13 @@ public class UnitConverterFrontend extends JFrame {
 
 	 
 	 public void writeValue (JTextFieldUnit othertext, JTextFieldUnit thistext, JComboBox lefte, JComboBox righte) {
-		 if(lefte.getSelectedItem() != null && righte.getSelectedItem() != null) 
+		 if(lefte.getSelectedItem() != null && righte.getSelectedItem() != null)
+			 try {
 			othertext.setText(Double.toString(Converter.convert(Double.parseDouble(thistext.getText()), lefte.getSelectedItem().toString() , righte.getSelectedItem().toString())));
-		    
+			 }
+		 	catch (Exception e) {
+		 		
+		 	}
 	 }
 	 
 	 public void emptyBox () {
