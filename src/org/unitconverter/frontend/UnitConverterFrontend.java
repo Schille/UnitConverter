@@ -13,14 +13,16 @@ import java.awt.event.KeyEvent;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 import java.text.ParseException;
+import java.util.HashSet;
 
 import javax.swing.ImageIcon;
 import javax.swing.InputVerifier;
 import javax.swing.JButton;
-import javax.swing.JComboBox;
+
 import javax.swing.JComponent;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
 import javax.swing.event.ChangeEvent;
@@ -29,7 +31,7 @@ import javax.swing.event.ChangeListener;
 
 import org.unitconverter.CONFIG;
 import org.unitconverter.Converter;
-import org.unitconverter.components.JTextFieldUnit;
+import org.unitconverter.components.*;
 
 /**
  * @author Michael Schilonka, Robert Stein
@@ -51,7 +53,7 @@ public class UnitConverterFrontend extends JFrame {
 	private JPanel panel_gr2;
 
 	
-	
+	private JLabel label_err;
 	private JLabel label_l;
 	private JLabel label_r;
 	private JLabel label_l2;
@@ -80,10 +82,10 @@ public class UnitConverterFrontend extends JFrame {
 	private JTextFieldUnit fieldright_2;	
 	
 	
-	private JComboBox comboboxleft;
-	private JComboBox comboboxright;
-	private JComboBox comboboxleft_2;
-	private JComboBox comboboxright_2;
+	private JComboBoxUnit comboboxleft;
+	private JComboBoxUnit comboboxright;
+	private JComboBoxUnit comboboxleft_2;
+	private JComboBoxUnit comboboxright_2;
 	
 	private Font Labelfont = new Font("Arial", 0, 30);
 	private Font Fieldfont = new Font("Arial", 0, 20);
@@ -125,8 +127,7 @@ public class UnitConverterFrontend extends JFrame {
 			public void stateChanged(ChangeEvent arg0) {
 				if (tabbedPane.getSelectedIndex()==1)
 					emptyBox2();
-					
-				
+					fillComboBox(CONFIG.Units.ALL);
 			}
 		});
 		
@@ -168,8 +169,8 @@ public class UnitConverterFrontend extends JFrame {
 			panel1.setLayout(null);
 			panel1.setBounds(0, 0, W_SIZE, H_SIZE);
 			
-			comboboxleft = new JComboBox();
-			comboboxright = new JComboBox();
+			comboboxleft = new JComboBoxUnit();
+			comboboxright = new JComboBoxUnit();
 			
 			fieldleft = new JTextFieldUnit("0.0") ;			
 			fieldright = new JTextFieldUnit("0.0");
@@ -253,8 +254,8 @@ public class UnitConverterFrontend extends JFrame {
 			panel3.setLayout(null);
 			panel3.setBounds(0, 0, W_SIZE, H_SIZE);
 			
-			comboboxleft_2 = new JComboBox();
-			comboboxright_2 = new JComboBox();
+			comboboxleft_2 = new JComboBoxUnit();
+			comboboxright_2 = new JComboBoxUnit();
 			
 			fieldleft_2 = new JTextFieldUnit("0.0");
 			fieldright_2 = new JTextFieldUnit("0.0");
@@ -286,6 +287,12 @@ public class UnitConverterFrontend extends JFrame {
 			label_l2.setLocation(33, 70);
 			label_r2.setLocation(302, 70);
 			
+			label_err = new JLabel("WŠhlen Sie nicht den Strich aus!");
+			label_err.setFont(Labelfont);
+			label_err.setForeground(Color.RED);
+			label_err.setLocation(30, 170);
+			label_err.setSize(500, 40);
+			label_err.setVisible(false);
 			
 			label_l2.setSize(100, 25);
 			label_r2.setSize(100, 25);
@@ -314,6 +321,7 @@ public class UnitConverterFrontend extends JFrame {
 			panel3.add(comboboxright_2);
 			panel3.add(arrow2);
 			panel3.add(arrow_o2);
+			panel3.add(label_err);
 		 
 			comboboxleft_2.addActionListener(new BoxListener(fieldleft_2, fieldright_2, comboboxright_2, comboboxleft_2, this));
 			comboboxright_2.addActionListener(new BoxListener(fieldright_2, fieldleft_2, comboboxleft_2, comboboxright_2, this));
@@ -442,14 +450,35 @@ public class UnitConverterFrontend extends JFrame {
 	 
 
 	 
-	 public void writeValue (JTextFieldUnit othertext, JTextFieldUnit thistext, JComboBox lefte, JComboBox righte) {
+	 public void writeValue (JTextFieldUnit othertext, JTextFieldUnit thistext, JComboBoxUnit lefte, JComboBoxUnit righte) {
 		 if(lefte.getSelectedItem() != null && righte.getSelectedItem() != null)
 			 try {
 			othertext.setText(Double.toString(Converter.convert(Double.parseDouble(thistext.getText()), lefte.getSelectedItem().toString() , righte.getSelectedItem().toString())));
+			label_err.setVisible(false);
 			 }
 		 	catch (Exception e) {
 		 		
+		 		righte.setEnabled(false);
+		 		label_err.setVisible(true);
+		 		righte.setEnabled(true);
+		 		lefte.removeAllItems();
+		 		for(String key : Converter.getConvertableUnits(righte.getSelectedItem().toString())) {
+		 			lefte.addItem(key);
+		 		}
+		 		lefte.addItem("----------");
+		 		int k = lefte.getItemCount()-1;
+		 		HashSet<Integer> temp = new HashSet<Integer>();
+		 		temp.add(k);
+		 		lefte.setDisableIndex(temp);
+		 		for(String key : Converter.getUnitsAppropriated(CONFIG.Units.ALL)) {
+		 			lefte.addItem(key);
+		 		}
+	 		
+		 		
+		 		
 		 	}
+				
+
 	 }
 	 
 	 public void emptyBox () {

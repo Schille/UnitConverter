@@ -7,6 +7,7 @@ package org.unitconverter;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 import java.util.Set;
 
 import javax.measure.converter.UnitConverter;
@@ -26,16 +27,27 @@ import org.jscience.physics.amount.Amount;
  *
  */
 public class Converter {
-	private static ArrayList<String> length = (ArrayList<String>) Arrays.asList("m", "mm", "cm", "km");
+	private static List<String> length =  Arrays.asList("m", "mm", "cm", "km");
 
-	private static ArrayList<String> mass = (ArrayList<String>) Arrays.asList("kg", "g", "mg", "t");
+	private static List<String> mass =  Arrays.asList("kg", "g", "mg", "t");
 	
-	private static ArrayList<String> capacity = (ArrayList<String>) Arrays.asList("m³", "cm³", "dm³", "mm³", "L", "mL","cL");
+	private static List<String> capacity =  Arrays.asList("m³", "cm³", "dm³", "mm³", "L", "mL","cL");
 	
-	private static ArrayList<String> area = (ArrayList<String>) Arrays.asList("m²", "cm²", "dm³", "mm³", "ha");
+	private static List<String> area =Arrays.asList("m²", "cm²", "dm³", "mm³", "ha");
 	
-	private static ArrayList<String> other = (ArrayList<String>) Arrays.asList("m/s", "km/h", "km/s", "m/h", "V", "mV", "kV", "W", "mW",
-			"MW", "kW", "N", "J", "kJ", "Nm", "kN");
+	private static List<String> speed =Arrays.asList("m/s", "km/h", "km/s", "m/h");
+	
+	private static List<String> force=Arrays.asList("N", "kN", "MN");
+	
+	private static List<String> current =Arrays.asList("A", "mA", "kA");
+	
+	private static List<String> tension =Arrays.asList("V", "mV", "kV");
+	
+	private static List<String> power =Arrays.asList("W", "mW",
+			"MW", "kW");
+	
+	private static List<String> energy =Arrays.asList("J", "kJ", "Nm");
+
 	
 	
 	public static double convert(double myFromValue, String myFromUnit,  String myToUnit){
@@ -63,7 +75,8 @@ public class Converter {
 			return area.toArray(a);
 		}
 
-		return concatAll(length.toArray(a), mass.toArray(a), capacity.toArray(a), area.toArray(a), other.toArray(a));
+		return concatAll(length.toArray(a), mass.toArray(a), capacity.toArray(a), area.toArray(a), force.toArray(a), current.toArray(a),
+				tension.toArray(a), energy.toArray(a), power.toArray(a), speed.toArray(a));
 	}
 	
 	public static String[] getConvertableUnits(String myUnit){
@@ -76,13 +89,23 @@ public class Converter {
 			return capacity.toArray(a);
 		if(area.contains(myUnit))
 			return area.toArray(a);
-		return other.toArray(a);
+		if(speed.contains(myUnit))
+			return speed.toArray(a);
+		if(force.contains(myUnit))
+			return force.toArray(a);
+		if(current.contains(myUnit))
+			return current.toArray(a);
+		if(tension.contains(myUnit))
+			return tension.toArray(a);
+		if(energy.contains(myUnit))
+			return energy.toArray(a);
+		return power.toArray(a);
 	}
 	
 	
 	
 	
-	public static <T> T[] concatAll(T[] first, T[]... rest) {
+	private static <T> T[] concatAll(T[] first, T[]... rest) {
 		  int totalLength = first.length;
 		  for (T[] array : rest) {
 		    totalLength += array.length;

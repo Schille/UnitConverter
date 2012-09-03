@@ -6,15 +6,15 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
 import javax.swing.JComboBox;
-import org.unitconverter.components.JTextFieldUnit;
+import org.unitconverter.components.*;
 
 public class FieldListener implements KeyListener {
 	private JTextFieldUnit othertext;
 	private JTextFieldUnit thistext;
-	private JComboBox lefte, righte;
+	private JComboBoxUnit lefte, righte;
 	private UnitConverterFrontend frontend;
 	
-	FieldListener (JTextFieldUnit field, JTextFieldUnit fieldthis, JComboBox left, JComboBox right, UnitConverterFrontend front) {
+	FieldListener (JTextFieldUnit field, JTextFieldUnit fieldthis, JComboBoxUnit left, JComboBoxUnit right, UnitConverterFrontend front) {
 		othertext = field;
 		thistext = fieldthis;
 		lefte = left;
@@ -27,7 +27,7 @@ public class FieldListener implements KeyListener {
 	public void keyPressed(KeyEvent e) {
 		
 	
-	}
+	} 
 
 	@Override
 	public void keyReleased(KeyEvent e) {
