@@ -208,13 +208,13 @@ public class UnitConverterFrontend extends JFrame {
 			label_r.setFont(Labelfont);
 			label_r.setSize(100, 25);
 			
-			ImageIcon arrow_icon = new ImageIcon("pic/arrow_right.png");
+			ImageIcon arrow_icon = new ImageIcon(getClass().getResource("/pic/arrow_right.png"));
 			arrow_icon = new ImageIcon(arrow_icon.getImage().getScaledInstance(40, 40, java.awt.Image.SCALE_SMOOTH));
 			arrow = new JLabel(arrow_icon);
 		    arrow.setLocation(257, H_SIZE/3);
 		    arrow.setSize(40,40);
 		    
-		    ImageIcon arrow_o_icon = new ImageIcon("pic/arrow_left.png");
+		    ImageIcon arrow_o_icon = new ImageIcon(getClass().getResource("/pic/arrow_left.png"));
 			arrow_o_icon = new ImageIcon(arrow_o_icon.getImage().getScaledInstance(40, 40, java.awt.Image.SCALE_SMOOTH));
 			arrow_o = new JLabel(arrow_o_icon);
 		    arrow_o.setLocation(257, H_SIZE/3);
@@ -222,7 +222,7 @@ public class UnitConverterFrontend extends JFrame {
 		    arrow_o.setVisible(false);
 		   
 		    
-			button_back = new JButton("Zur�ck zum Men�!");
+			button_back = new JButton("Zurück zum Menü!");
 			button_back.setSize(150, 30);
 			button_back.setLocation(390, 210);
 			button_back.addActionListener(new ButtonListener(this, 'b'));
