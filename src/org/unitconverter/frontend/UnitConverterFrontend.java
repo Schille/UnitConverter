@@ -21,10 +21,11 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
-import javax.swing.JTextField;
+
 
 import org.unitconverter.CONFIG;
 import org.unitconverter.Converter;
+import org.unitconverter.components.JTextFieldUnit;
 
 /**
  * @author Michael Schilonka, Robert Stein
@@ -44,10 +45,13 @@ public class UnitConverterFrontend extends JFrame {
 	private JPanel panel_menu;
 	private JPanel panel_conv;
 	private JPanel panel_gr2;
+	private JLabel arrow;
 	
 	
 	private JLabel label_l;
 	private JLabel label_r;
+	private JLabel label_l2;
+	private JLabel label_r2;
 	private JLabel label_menu;
 	private JLabel label_mass;
 	private JLabel label_area;
@@ -61,18 +65,19 @@ public class UnitConverterFrontend extends JFrame {
 	private JButton button_area;
 	
 
-	private JTextField fieldleft;
-	private JTextField fieldright;
-	
+	private JTextFieldUnit fieldleft;
+	private JTextFieldUnit fieldright;
+	private JTextFieldUnit fieldleft_2;
+	private JTextFieldUnit fieldright_2;	
 	
 	
 	private JComboBox comboboxleft;
 	private JComboBox comboboxright;
-	
 	private JComboBox comboboxleft_2;
 	private JComboBox comboboxright_2;
 	
 
+	
 	// size of the window
 	static final int H_SIZE = 300;
 	static final int W_SIZE = 550;
@@ -145,34 +150,10 @@ public class UnitConverterFrontend extends JFrame {
 			comboboxleft = new JComboBox();
 			comboboxright = new JComboBox();
 			
-			fieldleft = new JTextField("0") {
-			  public void processKeyEvent(KeyEvent ev) {
-			    char c = ev.getKeyChar();
-			    try {
-			     
-			      if ((c > 31 && c < 127) && !(c == 44) && !(c == 46) ) {
-			        Integer.parseInt(c + "");
-			      }
-			      if (c == 46) {
-				    	if(!fieldleft.getText().contains(".")) {
-				    	Integer.parseInt(c + "");
-				    	}
-				      }
-			      
-			      if (c == 44) {
-			    	fieldleft.setText(fieldleft.getText() + ".");
-			    	Integer.parseInt(c + "");
-			      }
-			      super.processKeyEvent(ev);
-			    }
-			    catch (NumberFormatException nfe) {
-			      
-			    }
-			  }
-			};
+			fieldleft = new JTextFieldUnit("0") ;
 
 			
-			fieldright = new JTextField("0");
+			fieldright = new JTextFieldUnit("0");
 			
 			
 			label_l = new JLabel("Von: ");
@@ -192,16 +173,22 @@ public class UnitConverterFrontend extends JFrame {
 			
 			fieldleft.addKeyListener(new FieldListener(fieldright, fieldleft, comboboxleft, comboboxright, this));
 			fieldright.addKeyListener(new FieldListener(fieldleft, fieldright, comboboxright, comboboxleft, this));
+			fieldleft.addFocusListener(new FieldFocusListener(this));
+			fieldright.addFocusListener(new FieldFocusListener(this));
+			
 			
 			label_l.setLocation(33, H_SIZE/3-20);
 			label_r.setLocation(302, H_SIZE/3-20);
-			
-			
-			
-			
 			label_l.setSize(50, 25);
 			label_r.setSize(50, 25);
-	
+			
+			ImageIcon arrow_icon = new ImageIcon("pic/grey_arrow_right.png");
+			arrow_icon = new ImageIcon(arrow_icon.getImage().getScaledInstance(40, 40, java.awt.Image.SCALE_SMOOTH));
+			
+			arrow = new JLabel(arrow_icon);
+		    arrow.setLocation(260, H_SIZE/3);
+		    arrow.setSize(40,40);
+		    
 			button_back = new JButton("ZurŸck zum MenŸ!");
 			button_back.setSize(150, 30);
 			button_back.setLocation(390, 210);
@@ -214,10 +201,12 @@ public class UnitConverterFrontend extends JFrame {
 			panel1.add(button_back); 
 			panel1.add(comboboxleft);
 			panel1.add(comboboxright);
+			panel1.add(arrow);
 		 
 			comboboxleft.addActionListener(new BoxListener(fieldleft, fieldright, comboboxright, comboboxleft, this));
 			comboboxright.addActionListener(new BoxListener(fieldright, fieldleft, comboboxleft, comboboxright, this));
-			
+			comboboxleft.addFocusListener(new FieldFocusListener(this));
+			comboboxright.addFocusListener(new FieldFocusListener(this));
 			
 			panel1.validate();
 			
@@ -234,12 +223,12 @@ public class UnitConverterFrontend extends JFrame {
 			comboboxleft_2 = new JComboBox();
 			comboboxright_2 = new JComboBox();
 			
-			fieldleft = new JTextField("0");
-			fieldright = new JTextField("0");
+			fieldleft_2 = new JTextFieldUnit("0");
+			fieldright_2 = new JTextFieldUnit("0");
 			
 			
-			label_l = new JLabel("Von: ");
-			label_r = new JLabel("In: ");
+			label_l2 = new JLabel("Von: ");
+			label_r2 = new JLabel("In: ");
 			
 			
 			comboboxleft_2.setLocation(155, H_SIZE/3);
@@ -248,32 +237,34 @@ public class UnitConverterFrontend extends JFrame {
 			comboboxright_2.setSize(100, 25);
 			
 			
-			fieldleft.setLocation(30, H_SIZE/3);
-			fieldright.setLocation(300, H_SIZE/3);
-			fieldleft.setSize(120, 25);
-			fieldright.setSize(120, 25);
+			fieldleft_2.setLocation(30, H_SIZE/3);
+			fieldright_2.setLocation(300, H_SIZE/3);
+			fieldleft_2.setSize(120, 25);
+			fieldright_2.setSize(120, 25);
 			
-			fieldleft.addKeyListener(new FieldListener(fieldright, fieldleft, comboboxleft, comboboxright, this));
-			fieldright.addKeyListener(new FieldListener(fieldleft, fieldright, comboboxright, comboboxleft, this));
+			fieldleft_2.addKeyListener(new FieldListener(fieldright_2, fieldleft_2, comboboxleft_2, comboboxright_2, this));
+			fieldright_2.addKeyListener(new FieldListener(fieldleft_2, fieldright_2, comboboxright_2, comboboxleft_2, this));
+			fieldleft_2.addFocusListener(new FieldFocusListener(this));
+			fieldright_2.addFocusListener(new FieldFocusListener(this));
+			
+			label_l2.setLocation(33, H_SIZE/3-20);
+			label_r2.setLocation(302, H_SIZE/3-20);
 			
 			
-			label_l.setLocation(33, H_SIZE/3-20);
-			label_r.setLocation(302, H_SIZE/3-20);
-			
-			
-			label_l.setSize(50, 25);
-			label_r.setSize(50, 25);
+			label_l2.setSize(50, 25);
+			label_r2.setSize(50, 25);
 
-			panel3.add(fieldleft);
-			panel3.add(fieldright);
-			panel3.add(label_l);
-			panel3.add(label_r); 
+			panel3.add(fieldleft_2);
+			panel3.add(fieldright_2);
+			panel3.add(label_l2);
+			panel3.add(label_r2); 
 			panel3.add(comboboxleft_2);
 			panel3.add(comboboxright_2);
 		 
-			comboboxleft_2.addActionListener(new BoxListener(fieldleft, fieldright, comboboxright_2, comboboxleft_2, this));
-			comboboxright_2.addActionListener(new BoxListener(fieldright, fieldleft, comboboxleft_2, comboboxright_2, this));
-			
+			comboboxleft_2.addActionListener(new BoxListener(fieldleft_2, fieldright_2, comboboxright_2, comboboxleft_2, this));
+			comboboxright_2.addActionListener(new BoxListener(fieldright_2, fieldleft_2, comboboxleft_2, comboboxright_2, this));
+			comboboxleft_2.addFocusListener(new FieldFocusListener(this));
+			comboboxright_2.addFocusListener(new FieldFocusListener(this));
 			
 			panel3.validate();
 			
@@ -291,6 +282,8 @@ public class UnitConverterFrontend extends JFrame {
 			label_area = new JLabel("FlŠche");
 			label_cap  = new JLabel("Volumen");
 			label_len  = new JLabel("LŠnge");
+			
+			
 			
 			ImageIcon mass = new ImageIcon("pic/mass.png");
 			Image mass_i = mass.getImage();
@@ -366,12 +359,43 @@ public class UnitConverterFrontend extends JFrame {
 
 	 }
 	 
+	 
+	 
 
 	 
-	 public void writeValue (JTextField othertext, JTextField thistext, JComboBox lefte, JComboBox righte) {
+	 public void writeValue (JTextFieldUnit othertext, JTextFieldUnit thistext, JComboBox lefte, JComboBox righte) {
 		 if(lefte.getSelectedItem() != null && righte.getSelectedItem() != null) 
 			othertext.setText(Double.toString(Converter.convert(Double.parseDouble(thistext.getText()), lefte.getSelectedItem().toString() , righte.getSelectedItem().toString())));
-		}
+		    
+	 }
+	 
+	
+	 
+	 public void switchLabels() {
+		 // Only to switch Labels if necessary
+		 if(tabbedPane.getSelectedIndex() == 0) {
+			 if(fieldleft.hasFocus() || comboboxleft.hasFocus()) {
+			 label_l.setText("Von:");
+			 label_r.setText("In:");
+		 }
+		 else {
+			 label_r.setText("Von:");
+			 label_l.setText("In:"); 
+			 
+		 }
+		 }
+		 else {
+			 if(fieldleft_2.hasFocus() || comboboxleft_2.hasFocus()) {
+			 label_l2.setText("Von:");
+			 label_r2.setText("In:");
+		 }
+		 else {
+			 label_r2.setText("Von:");
+			 label_l2.setText("In:"); 
+			 
+		 }
+		 }
+	 }
 	 
 
 	

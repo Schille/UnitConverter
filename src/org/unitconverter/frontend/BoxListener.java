@@ -4,16 +4,16 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JComboBox;
-import javax.swing.JTextField;
+import org.unitconverter.components.JTextFieldUnit;
 
 	 class BoxListener implements ActionListener {
 		 
-			private JTextField othertext;
-			private JTextField thistext;
+			private JTextFieldUnit othertext;
+			private JTextFieldUnit thistext;
 			private JComboBox lefte, righte;
 			private UnitConverterFrontend frontend;
 			
-			BoxListener (JTextField field, JTextField fieldthis, JComboBox left, JComboBox right, UnitConverterFrontend front) {
+			BoxListener (JTextFieldUnit field, JTextFieldUnit fieldthis, JComboBox left, JComboBox right, UnitConverterFrontend front) {
 				othertext = field;
 				thistext = fieldthis;
 				lefte = left;

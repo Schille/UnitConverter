@@ -6,15 +6,15 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
 import javax.swing.JComboBox;
-import javax.swing.JTextField;
+import org.unitconverter.components.JTextFieldUnit;
 
 public class FieldListener implements KeyListener {
-	private JTextField othertext;
-	private JTextField thistext;
+	private JTextFieldUnit othertext;
+	private JTextFieldUnit thistext;
 	private JComboBox lefte, righte;
 	private UnitConverterFrontend frontend;
 	
-	FieldListener (JTextField field, JTextField fieldthis, JComboBox left, JComboBox right, UnitConverterFrontend front) {
+	FieldListener (JTextFieldUnit field, JTextFieldUnit fieldthis, JComboBox left, JComboBox right, UnitConverterFrontend front) {
 		othertext = field;
 		thistext = fieldthis;
 		lefte = left;
@@ -25,31 +25,8 @@ public class FieldListener implements KeyListener {
 	
 	@Override
 	public void keyPressed(KeyEvent e) {
-		// TODO Auto-generated method stub
-//		JTextField sender = (JTextField)e.getSource();
-//		
-//		try {
-//			Integer.parseInt(sender.getText().substring(sender.getText().length()-1, sender.getText().length()));
-//
-//			
-//		}
-//		catch (NumberFormatException ex) {
-//		    
-//			// sender.setText(sender.getText().substring(0, sender.getText().length()-1));
-//		
-//		}
 		
-//		JTextField sender = (JTextField)e.getSource();
-//		char c = e.getKeyChar();
-//		if(!Character.isDigit(c)) {
-//			e.consume();
-//			
-//		}
-		
-		
-		
-
-//	
+	
 	}
 
 	@Override
