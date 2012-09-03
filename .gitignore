@@ -1,2 +1,10 @@
 *.class
-.DS_Store
+*.DS_Store
+*.lock
+
+# Folder
+bin/
+
+# eclipse
+*.project
+*.classpath
