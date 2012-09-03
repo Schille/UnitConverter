@@ -4,34 +4,25 @@
 package org.unitconverter.frontend;
 
 import java.awt.Color;
-import java.awt.Component;
 import java.awt.Font;
 import java.awt.Image;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.KeyEvent;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
-import java.text.ParseException;
 import java.util.HashSet;
 
 import javax.swing.ImageIcon;
-import javax.swing.InputVerifier;
 import javax.swing.JButton;
-
-import javax.swing.JComponent;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
-
 import org.unitconverter.CONFIG;
 import org.unitconverter.Converter;
-import org.unitconverter.components.*;
+import org.unitconverter.components.JComboBoxUnit;
+import org.unitconverter.components.JTextFieldUnit;
 
 /**
  * @author Michael Schilonka, Robert Stein
@@ -96,7 +87,6 @@ public class UnitConverterFrontend extends JFrame {
 
 	public UnitConverterFrontend() {
 		initComponents();
-
 	}
 
 	private void initComponents() {
