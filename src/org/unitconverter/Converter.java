@@ -82,7 +82,7 @@ public class Converter {
 	
 	
 	
-	public static <T> T[] concatAll(T[] first, T[]... rest) {
+	private static <T> T[] concatAll(T[] first, T[]... rest) {
 		  int totalLength = first.length;
 		  for (T[] array : rest) {
 		    totalLength += array.length;
