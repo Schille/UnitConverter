@@ -3,7 +3,8 @@ package org.unitconverter.frontend;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import org.unitconverter.CONFIG;
+import org.unitconverter.*;
+import org.unitconverter.CONFIG.Units;
 
 
 public class ButtonListener implements ActionListener {
@@ -18,9 +19,9 @@ public class ButtonListener implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		switch (menu) {
-		case 'b': frontend.switchMenu(); break;
+		case 'b': frontend.switchMenu(); break; 
 		case 'm': 	frontend.emptyBox();
-					frontend.fillComboBox(CONFIG.Units.MASS);
+					frontend.fillComboBox(Units.MASS);
 					frontend.switchMenu();
 					break;
 		case 'c':  	frontend.emptyBox();
