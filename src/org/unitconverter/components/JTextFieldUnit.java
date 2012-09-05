@@ -15,14 +15,10 @@ public class JTextFieldUnit extends JTextField {
 		    char c = ev.getKeyChar();
 		    try {
 		     
-		      if ((c > 31 && c < 127) && !(c == 44) && !(c == 46) & !(c == 69) ) {
+		      if ((c > 31 && c < 127) && !(c == 44) && !(c == 46) && !(c == 101) ) {
 		        Integer.parseInt(c + "");
 		      }
-		      if (c == 69) {		    	  
-			    	if(super.getText().contains("E")) {
-			    	return;
-			    	}
-			      }
+
 		      if (c == 46) {		    	  
 			    	if(super.getText().contains(".")) {
 			    	return;
@@ -35,10 +31,17 @@ public class JTextFieldUnit extends JTextField {
 		    	  }
 		    	  else  ev.setKeyChar('.');
 		      }
+		      
+		      if (c == 101) {		    	  
+			    	if(super.getText().contains("E")) {
+			    	return;
+			    	}
+			    	else  ev.setKeyChar('E');
+			      }
+		      
 		      super.processKeyEvent(ev);
 		    }
 		    catch (NumberFormatException nfe) {
-		      
 		    }
 		  }
 		}

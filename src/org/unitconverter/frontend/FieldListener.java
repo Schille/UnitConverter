@@ -14,7 +14,8 @@ public class FieldListener implements KeyListener {
 	private JComboBoxUnit lefte, righte;
 	private UnitConverterFrontend frontend;
 	
-	FieldListener (JTextFieldUnit field, JTextFieldUnit fieldthis, JComboBoxUnit left, JComboBoxUnit right, UnitConverterFrontend front) {
+	FieldListener(JTextFieldUnit field, JTextFieldUnit fieldthis,
+			JComboBoxUnit left, JComboBoxUnit right, UnitConverterFrontend front) {
 		othertext = field;
 		thistext = fieldthis;
 		lefte = left;
@@ -32,9 +33,12 @@ public class FieldListener implements KeyListener {
 	@Override
 	public void keyReleased(KeyEvent e) {
 		// TODO Auto-generated method stub
-
+		if(e.getKeyChar() != 8) {
 		frontend.writeValue(othertext, thistext, lefte, righte);
-		
+		}
+		else {
+			new WaitingThread(frontend, othertext, thistext, lefte, righte);
+		}
 	}
 
 	@Override
